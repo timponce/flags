@@ -1,6 +1,10 @@
+import countryNameMap from "./countryNameMap";
+
 // Helper function to process image paths and create a dictionary
 const processImages = (folder: string) => {
-  const countryCodes = ["zm", "zw"]; // Add all country codes here
+  // Dynamically get all country codes from countryNameMap
+  const countryCodes = Object.keys(countryNameMap);
+
   return countryCodes.reduce(
     (acc, code) => {
       acc[code] = `/flags/${folder}/${code}.webp`; // Construct the URL
