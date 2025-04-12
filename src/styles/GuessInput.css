@@ -1,0 +1,15 @@
+.guess-input-container {
+  margin-bottom: 20px;
+}
+
+.guess-input {
+  padding: 10px;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.submit-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}

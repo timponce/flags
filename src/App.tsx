@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import { flags } from "./data/flags";
+import FlagDisplay from "./components/FlagDisplay";
+import GuessInput from "./components/GuessInput";
+import ResultMessage from "./components/ResultMessage";
+import "./App.css"; // Global styles
 
 const App: React.FC = () => {
   const [currentFlag, setCurrentFlag] = useState(
@@ -23,24 +27,14 @@ const App: React.FC = () => {
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
+    <div className="app-container">
       <h1>Guess the Flag</h1>
-      <img
-        src={currentFlag.image.large}
-        alt="flag"
-        style={{ width: "200px", height: "auto" }}
-      />
-      <div>
-        <input
-          type="text"
-          value={guess}
-          onChange={(e) => setGuess(e.target.value)}
-          placeholder="Enter country name"
-        />
-        <button onClick={handleGuess}>Submit</button>
-      </div>
-      {result && <p>{result}</p>}
-      <button onClick={nextFlag}>Next Flag</button>
+      <FlagDisplay image={currentFlag.image.w320} />
+      <GuessInput guess={guess} setGuess={setGuess} handleGuess={handleGuess} />
+      <ResultMessage result={result} />
+      <button onClick={nextFlag} className="next-flag-button">
+        Next Flag
+      </button>
     </div>
   );
 };
