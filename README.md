@@ -1,4 +1,4 @@
-# **Flag App**
+# **Flags**
 
 A simple web app where users are shown a random flag and must guess the corresponding country. The app dynamically loads flag images and supports multiple resolutions. It is designed to eventually integrate with AWS for hosting flag images via a CDN.
 
@@ -41,8 +41,8 @@ https://dpqsjxwi1k1v2.cloudfront.net/
 1. **Clone the Repository**
 
    ```
-   git clone https://github.com/<your-username>/guess-the-flag.git
-   cd guess-the-flag
+   git clone https://github.com/timponce/flags.git
+   cd flags
    ```
 
 2. **Install Dependencies**
