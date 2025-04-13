@@ -2,6 +2,10 @@
 
 A simple web app where users are shown a random flag and must guess the corresponding country. The app dynamically loads flag images and supports multiple resolutions. It is designed to eventually integrate with AWS for hosting flag images via a CDN.
 
+## Check it out
+
+https://dpqsjxwi1k1v2.cloudfront.net/
+
 ---
 
 ## **Features**
@@ -81,15 +85,14 @@ public/
 
 ### Future Plans
 
-**AWS Integration:**
+**Additional Features:**
 
-- Host flag images on AWS S3.
-- Serve images via AWS CloudFront for faster delivery.
-  **Additional Features:**
 - Add a scoring system.
 - Implement difficulty levels (e.g., common vs. rare flags).
 - Add a leaderboard using a backend (e.g., AWS Lambda + DynamoDB).
-  **Responsive Design:**
+
+**Responsive Design:**
+
 - Optimize the app for mobile and tablet devices.
 
 ## Contributing
