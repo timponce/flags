@@ -1,10 +1,12 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { flags } from "../data/flags";
 import "./../styles/FlagPage.css";
 
 const FlagPage: React.FC = () => {
   const { flagCode } = useParams<{ flagCode: string }>();
+  const navigate = useNavigate();
+
   const flag = flags.find((f) => f.id === flagCode);
 
   if (!flag) {
@@ -14,7 +16,10 @@ const FlagPage: React.FC = () => {
   return (
     <div className="flag-page-container">
       <h1>{flag.name}</h1>
-      <img src={flag.image.w640} alt={flag.name} className="flag-page-image" />
+      <img src={flag.image.svg} alt={flag.name} className="flag-page-image" />
+      <button onClick={() => navigate(-1)} className="back-button">
+        Back
+      </button>
     </div>
   );
 };

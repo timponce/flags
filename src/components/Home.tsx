@@ -1,10 +1,17 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { flags } from "../data/flags";
 import GuessInput from "./GuessInput";
 import GiveUp from "./GiveUp";
 import FlagDisplay from "./FlagDisplay";
+import ScrollingBanner from "./ScrollingBanner";
+import { useCorrectAnswers } from "../context/CorrectAnswersContext";
+import "./../styles/Home.css";
 
 const Home: React.FC = () => {
+  const navigate = useNavigate();
+  const { addCorrectAnswer } = useCorrectAnswers();
+
   const [currentFlag, setCurrentFlag] = useState(
     () => flags[Math.floor(Math.random() * flags.length)]
   );
@@ -21,12 +28,13 @@ const Home: React.FC = () => {
       );
 
     if (isCorrect) {
+      addCorrectAnswer(currentFlag.id);
       setResult(
-        `Correct! Visit the country page: ` +
+        `✅ Correct! Visit the country page: ` +
           `<a href="/${currentFlag.id}" class="country-link">${currentFlag.name} ${currentFlag.emoji}</a>`
       );
     } else {
-      setResult("Incorrect!");
+      setResult("❌ Incorrect!");
     }
   };
 
@@ -39,8 +47,8 @@ const Home: React.FC = () => {
 
   const giveUp = () => {
     setResult(
-      `The correct answer is: ` +
-        `<a href="/${currentFlag.id}" class="country-link">${currentFlag.name} ${currentFlag.emoji}</a>`
+      `❌ The correct answer is: ` +
+        `<a href="/${currentFlag.id}" class="country-link">${currentFlag.name}</a>`
     );
     setIsDisabled(true); // Disable input and button when the user gives up
   };
@@ -48,7 +56,8 @@ const Home: React.FC = () => {
   return (
     <div className="app-container">
       <h1>Guess the Flag</h1>
-      <FlagDisplay image={currentFlag.image.w640} />
+      <ScrollingBanner />
+      <FlagDisplay image={currentFlag.image.svg} />
       <GuessInput
         guess={guess}
         setGuess={setGuess}
@@ -56,6 +65,9 @@ const Home: React.FC = () => {
         disabled={isDisabled}
       />
       <div className="button-container">
+        <button onClick={() => navigate("/all")} className="all-button">
+          See All
+        </button>
         <GiveUp onGiveUp={giveUp} />
         <button onClick={nextFlag} className="next-flag-button">
           Next Flag
