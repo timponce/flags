@@ -1,10 +1,12 @@
-import countryNameMap from "./countryNameMap";
+import countryData from "./country";
 import { imagesByResolution } from "./imagePathResolver";
 
 // Combine all resolutions into the `flags` array
-export const flags = Object.keys(imagesByResolution.w2560).map((id) => ({
+export const flags = Object.keys(countryData).map((id) => ({
   id, // Two-letter country code
-  country: countryNameMap[id] || id, // Full country name (fallback to id if not found)
+  name: countryData[id].name, // Full country name
+  aliases: countryData[id].aliases || [], // Optional aliases for the country
+  emoji: countryData[id].emoji || "", // Optional emoji for the country
   image: {
     w2560: imagesByResolution.w2560[id],
     w1280: imagesByResolution.w1280[id],

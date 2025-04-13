@@ -1,15 +1,40 @@
+/* Style the guess input container */
 .guess-input-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* Add space between input and button */
   margin-bottom: 20px;
 }
 
+/* Style the input field */
 .guess-input {
   padding: 10px;
   font-size: 16px;
-  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 200px;
+  box-sizing: border-box;
 }
 
+/* Style the submit button */
 .submit-button {
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+.submit-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
 }
